@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="assets/img/logo.svg" type="image/svg+xml" />
+
+    <!--=============== ICONS & FONTS ===============-->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,800;1,400;1,800&family=Shantell+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!-- TODO(placeholder): static meta can't read config.js — edit these by hand -->
+    <title>[YOUR_NAME] | [YOUR_ROLE]</title>
+    <meta name="description" content="[ONE_SENTENCE_SITE_DESCRIPTION]">
+    <link rel="canonical" href="https://[YOUR_DOMAIN]/">
+    <meta property="og:title" content="[YOUR_NAME]">
+    <meta property="og:description" content="[ONE_SENTENCE_SITE_DESCRIPTION]">
+    <meta property="og:url" content="https://[YOUR_DOMAIN]/">
+    <meta property="og:image" content="https://[YOUR_DOMAIN]/assets/img/og-banner.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!--=============== SCROLL PROGRESS ===============-->
+    <div id="scroll-progress"></div>
+
+    <!--=============== HEADER ===============-->
+    <header class="header header--pre-reveal" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo" aria-label="Home">
+                <!-- Placeholder mark: swap the paths for your own logo. Each .nav__logo-path
+                     is stroke-drawn during the loading screen. -->
+                <svg class="nav__logo-svg" viewBox="0 0 120 120" fill="none" stroke="currentColor"
+                    stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path class="nav__logo-path" pathLength="1" d="M30 14 H90 A16 16 0 0 1 106 30 V90 A16 16 0 0 1 90 106 H30 A16 16 0 0 1 14 90 V30 A16 16 0 0 1 30 14 Z" />
+                    <path class="nav__logo-path" pathLength="1" d="M60 36 A24 24 0 1 0 60.01 36" />
+                    <path class="nav__logo-path" pathLength="1" d="M68 70 L82 86" />
+                </svg>
+            </a>
+            <button class="nav__menu-btn" id="navMenuBtn" aria-label="Open menu">
+                <span class="nav__menu-btn-text"><span class="roller"><span>menu</span><span>menu</span></span></span>
+                <span class="nav__menu-btn-icon"><span class="nav__menu-bars"></span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!--=============== LOADING SCREEN ===============-->
+    <div id="loading-screen" aria-hidden="true">
+        <div class="loading__top">
+            <div class="loading__logo"></div>
+            <div class="loading__track"><div class="loading__fill" id="loading-fill"></div></div>
+        </div>
+        <div class="loading__counter"><span id="loading-pct">0%</span></div>
+    </div>
+
+    <!--=============== NAV OVERLAY ===============-->
+    <div class="nav-backdrop" id="navBackdrop"></div>
+    <div class="nav-overlay" id="navOverlay" inert>
+        <div class="nav-overlay__header">
+            <a href="index.html" class="nav-overlay__brand" data-bind="shortName"></a>
+            <button class="nav-overlay__close" id="navClose" aria-label="Close menu">✕</button>
+        </div>
+        <nav class="nav-overlay__menu">
+            <a href="#about" class="nav-overlay__link" data-close>About</a>
+            <a href="#experience" class="nav-overlay__link" data-close>Experience</a>
+            <a href="#building" class="nav-overlay__link" data-close>Now Building</a>
+            <a href="#work" class="nav-overlay__link" data-close>Projects</a>
+            <a href="#contact" class="nav-overlay__link" data-close>Contact</a>
+        </nav>
+        <div class="nav-overlay__footer">
+            <div class="nav-overlay__footer-col">
+                <a data-href="links.github" target="_blank" rel="noopener">GitHub</a>
+                <a data-href="links.linkedin" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+            <div class="nav-overlay__footer-col">
+                <a data-href="resumeUrl" target="_blank">Resume</a>
+            </div>
+        </div>
+    </div>
+
+    <!--=============== MAIN ===============-->
+    <main class="main">
+        <!--=============== HOME ===============-->
+        <section class="home section" id="home" data-header-color="#FFFFFF">
+            <div class="home__container container">
+                <div class="home__data">
+                    <h1 class="home__name">
+                        <span class="home__name-light" data-hero style="--hero-delay:.1s">hi, i'm</span>
+                        <span class="home__name-bold home__name-indent home__name-hand" data-hero style="--hero-delay:.22s"><span data-bind="shortName"></span></span>
+                        <span class="home__name-bold" data-hero style="--hero-delay:.34s" data-bind="role"></span>
+                    </h1>
+                    <p class="home__quote" data-hero style="--hero-delay:.5s" data-bind="tagline"></p>
+                    <div class="home__stack" data-hero style="--hero-delay:.58s" id="heroTags"></div>
+                    <div class="quick-links" data-hero style="--hero-delay:.72s">
+                        <div class="stack-btn-wrapper stack-btn-wrapper--dark">
+                            <div class="stack-btn__shadow-back"></div>
+                            <div class="stack-btn__shadow-mid"></div>
+                            <a data-href="links.linkedin" class="stack-btn stack-btn--dark" target="_blank" rel="noopener">connect with me</a>
+                        </div>
+                        <div class="stack-btn-wrapper">
+                            <div class="stack-btn__shadow-back"></div>
+                            <div class="stack-btn__shadow-mid"></div>
+                            <a data-href="resumeUrl" class="stack-btn" data-cursor="open pdf" target="_blank">resume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== ABOUT ===============-->
+        <section class="about section section--card" id="about" data-header-color="#C8F2DC">
+            <div class="about__container container">
+                <h2 class="section__title" data-reveal>about <em>me</em></h2>
+                <div class="about__grid" data-reveal>
+                    <img data-src="portrait" data-alt="portraitAlt" class="about__img" width="900" height="1200" loading="lazy" alt="">
+                    <div class="about__content" id="aboutContent"></div>
+                </div>
+            </div>
+            <div class="about__cta container" data-reveal>
+                <a data-href="links.linkedin" class="contact-button" data-cursor="say hi" target="_blank" rel="noopener">
+                    <span class="roller"><span>contact me</span><span>contact me</span></span>
+                </a>
+            </div>
+        </section>
+
+        <!--=============== SKILLS ===============-->
+        <section class="skills section" id="skills" data-header-color="#FFFFFF">
+            <h2 class="section__title" data-reveal>what I <em>use</em></h2>
+            <p class="side-note" aria-hidden="true">the tools I<br>reach for most</p>
+            <div class="stack container" id="stackGrid"></div>
+        </section>
+
+        <!--=============== PROCESS (original: "how I run agent teams") ===============-->
+        <section class="process section" id="process" data-header-color="#FFE4CC">
+            <h2 class="section__title" data-reveal id="processTitle"></h2>
+            <p class="side-note side-note--process" aria-hidden="true" id="processNote"></p>
+            <div class="process__wrap container" data-reveal>
+                <p class="process__lead" data-bind="process.lead"></p>
+                <ol class="process__flow" id="processSteps"></ol>
+                <div class="process__foot">
+                    <ul class="chips" id="processTools"></ul>
+                    <div class="process__actions">
+                        <a href="agents-md.html" class="text-link">copy my AGENTS.md</a>
+                        <div class="stack-btn-wrapper stack-btn-wrapper--dark">
+                            <div class="stack-btn__shadow-back"></div>
+                            <div class="stack-btn__shadow-mid"></div>
+                            <a href="agents.html" class="stack-btn stack-btn--dark">how it works</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== EDUCATION ===============-->
+        <section class="qualification section" id="qualification" data-header-color="#FDD5E6">
+            <h2 class="section__title" data-reveal>where I've <em>been</em></h2>
+            <h3 class="qualification__title">Education</h3>
+            <div class="timeline container" id="educationTimeline"></div>
+        </section>
+
+        <!--=============== EXPERIENCE ===============-->
+        <section class="experience section" id="experience" data-header-color="#FFF1B8">
+            <h2 class="section__title" data-reveal>where I've <em>worked</em></h2>
+            <div class="experience__layout container" data-reveal>
+                <div class="company-list" id="companyList"></div>
+                <div class="job-details" id="jobDetails"></div>
+            </div>
+        </section>
+
+        <!--=============== BUILDING NOW ===============-->
+        <section class="building section section--card" id="building" data-header-color="#C6F1EC">
+            <h2 class="section__title" data-reveal>what I'm <em>building</em> now</h2>
+            <div class="container" id="buildingCard" data-reveal></div>
+            <a href="#work" class="seam-note">
+                <span>there's more below</span>
+                <svg aria-hidden="true" viewBox="0 0 110 52" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path class="arrow-curve" pathLength="1" d="M 12 22 C 16 2 90 2 82 44" />
+                    <path class="arrow-head" pathLength="1" d="M 75 36 C 77 40 79 43 82 46 C 85 42 88 38 90 36" />
+                </svg>
+            </a>
+        </section>
+
+        <!--=============== PROJECTS ===============-->
+        <section class="work section" id="work" data-header-color="#D4E5FF">
+            <h2 class="section__title" data-reveal>things I've <em>built</em></h2>
+            <div class="projects-grid container" id="projectsGrid"></div>
+            <div class="container work__more">
+                <a href="archive.html" class="text-link">view the full archive</a>
+            </div>
+        </section>
+
+        <!--=============== GITHUB ===============-->
+        <section class="github section" id="github" data-header-color="#E6E0FF">
+            <h2 class="section__title" data-reveal>what I <em>ship</em> on github</h2>
+            <div class="github__grid container" data-reveal>
+                <div class="github__stats" id="githubStats" aria-live="polite"></div>
+                <div class="github__repos-head">
+                    <h3 class="github__repos-title">recently active</h3>
+                    <span class="github__note">public repos only</span>
+                </div>
+                <div class="github__repos" id="githubRepos"></div>
+                <a data-href="links.github" target="_blank" rel="noopener" class="text-link">view all on github</a>
+            </div>
+        </section>
+    </main>
+
+    <!--=============== CONTACT / FOOTER ===============-->
+    <section class="contact section" id="contact" data-header-color="#0F172A">
+        <div class="contact__body">
+            <div class="contact__header">
+                <span class="contact__eyebrow">Get in touch</span>
+                <h2 class="contact__signature"><span data-bind="handle"></span><span class="contact__dot">.</span></h2>
+                <p class="contact__tagline" data-bind="footerRole"></p>
+                <p class="contact__lead">Have a project in mind or just want to chat? My inbox is always open.</p>
+            </div>
+            <nav class="contact__links" aria-label="Contact">
+                <span class="contact__links-title">Elsewhere</span>
+                <a data-href="mailto" class="contact__link" data-cursor="write to me">
+                    <span class="contact__link-label">Email</span>
+                    <span class="contact__link-handle" data-bind="email"></span>
+                    <i class='bx bx-up-arrow-alt contact__link-arrow'></i>
+                </a>
+                <a data-href="links.github" target="_blank" rel="noopener" class="contact__link">
+                    <span class="contact__link-label">GitHub</span>
+                    <span class="contact__link-handle">@<span data-bind="handle"></span></span>
+                    <i class='bx bx-up-arrow-alt contact__link-arrow'></i>
+                </a>
+                <a data-href="links.linkedin" target="_blank" rel="noopener" class="contact__link">
+                    <span class="contact__link-label">LinkedIn</span>
+                    <span class="contact__link-handle">in/<span data-bind="handle"></span></span>
+                    <i class='bx bx-up-arrow-alt contact__link-arrow'></i>
+                </a>
+                <a data-href="resumeUrl" target="_blank" class="contact__link">
+                    <span class="contact__link-label">Resume</span>
+                    <span class="contact__link-handle">PDF</span>
+                    <i class='bx bx-up-arrow-alt contact__link-arrow'></i>
+                </a>
+            </nav>
+        </div>
+        <div class="contact__footer">
+            <span>Designed and Built by <a href="index.html" data-bind="shortName"></a></span>
+            <span>© <span id="currentYear"></span></span>
+            <a href="#home" class="footer__top" data-cursor="beam me up">Back to top <i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </section>
+
+    <!--=============== PROJECT DRAWER ===============-->
+    <div id="project-drawer" aria-hidden="true">
+        <div class="drawer__backdrop" id="drawerBackdrop"></div>
+        <aside class="drawer__panel" data-lenis-prevent>
+            <div class="drawer__head">
+                <span class="drawer__tag" id="drawerTag"></span>
+                <button class="drawer__close" id="drawerClose" aria-label="Close">✕</button>
+            </div>
+            <div class="drawer__img-wrap"><img class="drawer__img" id="drawerImg" src="" alt=""></div>
+            <div class="drawer__thumbs" id="drawerThumbs" hidden></div>
+            <div class="drawer__content">
+                <div class="drawer__meta">
+                    <h2 class="drawer__title" id="drawerTitle"></h2>
+                    <span class="drawer__year" id="drawerYear"></span>
+                </div>
+                <p class="drawer__desc" id="drawerDesc"></p>
+                <ul class="chips" id="drawerTech"></ul>
+                <div class="drawer__actions">
+                    <div class="stack-btn-wrapper stack-btn-wrapper--dark">
+                        <div class="stack-btn__shadow-back"></div>
+                        <div class="stack-btn__shadow-mid"></div>
+                        <a id="drawerLink" href="#" target="_blank" rel="noopener" class="stack-btn stack-btn--dark">visit project</a>
+                    </div>
+                    <div class="stack-btn-wrapper" id="drawerGithubWrapper">
+                        <div class="stack-btn__shadow-back"></div>
+                        <div class="stack-btn__shadow-mid"></div>
+                        <a id="drawerGithub" href="#" target="_blank" rel="noopener" class="stack-btn">github</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!--=============== SCRIPTS ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
